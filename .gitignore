@@ -1,0 +1,17 @@
+.env
+__pycache__
+.vscode
+.ipynb_*
+
+response.ipynb
+
+*env
+*.db
+*.json
+*.xml
+*.csv
+*.xls
+*.xlsx
+*.sqlite
+*.sqlite3
+*.zip
