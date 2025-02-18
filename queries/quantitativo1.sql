@@ -1,1 +1,0 @@
-SELECT * FROM kaggle.food_prices;

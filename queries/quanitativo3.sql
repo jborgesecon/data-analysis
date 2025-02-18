@@ -1,1 +1,0 @@
-select * from quantitativo.de_para_cc;
