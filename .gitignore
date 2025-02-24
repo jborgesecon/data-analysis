@@ -15,3 +15,5 @@ response.ipynb
 *.sqlite
 *.sqlite3
 *.zip
+
+*rep.sql

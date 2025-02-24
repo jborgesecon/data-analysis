@@ -24,7 +24,8 @@ all_datasets = {
         'receitas': "https://portaldatransparencia.gov.br/download-de-dados/receitas/{}",
         'orcamento': "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/{}",
         'despesas': "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/{}",
-        'licitacoes': "https://portaldatransparencia.gov.br/download-de-dados/licitacoes/{}"     # 201301
+        'licitacoes': "https://portaldatransparencia.gov.br/download-de-dados/licitacoes/{}",     # 201301
+        'cadastro_cnpj': "https://arquivos.receitafederal.gov.br/dados/cnpj/{}"
     },
     'webscraping': {
         'basketball': 'https://www.basketball-reference.com/leagues/NBA_{}_per_game.html',
@@ -75,9 +76,12 @@ def kaggle_download(dataset_name, db, schema):
 
 # downloads datasets from Portal da Transparencia
 def ptransp_download(db, base_url, dataset_name, year):
-    destination = f"{path}\\{db}"
-    url = base_url.replace("{year}", str(year))
-
+    destination = os.path.join(path, db)  # Ensure path is properly joined
+    os.makedirs(destination, exist_ok=True)  # Create directory if it doesn't exist
+    
+    # url = base_url.replace("{year}", str(year))
+    url = base_url
+    
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -86,10 +90,10 @@ def ptransp_download(db, base_url, dataset_name, year):
         with open(zip_file_path, "wb") as zip_file:
             zip_file.write(response.content)
 
-        print(f"successfully downloaded: {zip_file_path}")
+        print(f"Successfully downloaded: {zip_file_path}")
 
     except Exception as e:
-        print(f'error in {url}: {e}')
+        print(f'Error in {url}: {e}')
 
     return
 
