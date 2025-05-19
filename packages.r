@@ -17,7 +17,16 @@ packs <- c(
     "RPostgreSQL",
     "fakir",
     "plm",
-    "RSQLite"
+    "RSQLite",
+    "quantmod",
+    "timetk",
+    "scales",
+    "tidyquant",
+    "BatchGetSymbols",
+    "ggcorrplot",
+    "vars",
+    "aod",
+    "openxlsx"
 )
 
 install.packages(packs, dependencies = TRUE)
